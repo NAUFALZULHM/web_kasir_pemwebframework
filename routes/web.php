@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 Route::get('/template', function () {
     return view('template');
 });
@@ -10,5 +11,14 @@ Route::get('/', function () {
 });
 
 Route::get('/user', function () {
-    return view('admin.layouts.wrapper');
+    $data = [
+        'content' => 'admin.user.index'
+    ];
+    return view('admin.layouts.wrapper', $data);
+});
+Route::get('/post', function () {
+    $data = [
+        'content' => 'admin.post.index'
+    ];
+    return view('admin.layouts.wrapper', $data);
 });
