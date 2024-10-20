@@ -8,3 +8,7 @@ Route::get('/template', function () {
 Route::get('/', function () {
     return view('admin.layouts.wrapper');
 });
+
+Route::get('/user', function () {
+    return view('admin.layouts.wrapper');
+});
