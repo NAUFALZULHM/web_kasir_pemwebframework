@@ -10,17 +10,7 @@
     <div class="sidebar">
      
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -28,17 +18,17 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/post" class="nav-link">
+            <a href="/" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Post   
+                Dashboard
               </p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="/user" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 User  
               </p>
