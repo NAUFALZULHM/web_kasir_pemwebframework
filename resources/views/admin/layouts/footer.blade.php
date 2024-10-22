@@ -26,10 +26,10 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="vendor/admin/admin/plugins/jquery/jquery.min.js"></script>
+<script src="/vendor/admin/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="vendor/admin/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/admin/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="vendor/admin/admin/dist/js/adminlte.min.js"></script>
+<script src="/vendor/admin/admin/dist/js/adminlte.min.js"></script>
 </body>
 </html>

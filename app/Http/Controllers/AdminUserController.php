@@ -24,6 +24,10 @@ class AdminUserController extends Controller
     public function create()
     {
         //
+        $data = [
+            'content' => 'admin.user.create'
+        ];
+        return view('admin.layouts.wrapper', $data);
     }
 
     /**
