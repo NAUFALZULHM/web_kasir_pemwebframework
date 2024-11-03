@@ -24,5 +24,5 @@ Route::prefix('/admin')->middleware('auth')->group(function (){
     });
     Route::resource('/user', AdminUserController::class );
 });
-// tes
+// test ulang
 
