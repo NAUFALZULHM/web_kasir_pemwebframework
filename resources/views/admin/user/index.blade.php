@@ -3,6 +3,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <h5><b>{{ $title }}</b></h5>
                     <a href="/admin/user/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
 
                     @if (session()->has('success'))
