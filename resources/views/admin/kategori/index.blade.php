@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <h5><b>{{ $title }}</b></h5>
-                <a href="/admin/kategori/create" class="btn btn-primary mb-2"><i class="fa fa-plus"></i>Tambah</a>
+                <a href="/admin/kategori/create" class="btn btn-primary mb-2"><i class="fa fa-plus"></i> Tambah</a>
                 <table class="table">
                     <tr>
                         <th>No</th>

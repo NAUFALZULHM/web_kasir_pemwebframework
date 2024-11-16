@@ -18,7 +18,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -27,7 +27,16 @@
           </li>
 
           <li class="nav-item">
-            <a href="/admin/user" class="nav-link">
+            <a href="/admin/kategori" class="nav-link {{ Request::is('admin/kategori*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Kategori
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/admin/user" class="nav-link {{ Request::is('admin/user*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 User  
@@ -35,14 +44,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="/admin/kategori" class="nav-link">
-              <i class="nav-icon fas fa-list"></i>
-              <p>
-                Kategori
-              </p>
-            </a>
-          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
