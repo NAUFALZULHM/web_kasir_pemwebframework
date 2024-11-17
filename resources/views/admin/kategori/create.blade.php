@@ -5,12 +5,19 @@
                 <h5><b>{{ $title }}</b></h5>
                 
                 <hr>
-                <form action="/admin/kategori" method="POST">
+
+                @isset($kategori)
+                    <form action="/admin/kategori/{{ $kategori->id }}" method="POST">
+                        @method('PUT')
+                @else
+                    <form action="/admin/kategori" method="POST">
+                @endisset
+
                 @csrf
                 <label for="">Nama Kategori</label>
                 <input type="text" name="name" class="form-control @error('name') is-invalid
                     
-                @enderror" placeholder="Nama Kategori" value="{{ old('name') }}">
+                @enderror" placeholder="Nama Kategori" value="{{ isset($kategori) ? $kategori->name : old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
