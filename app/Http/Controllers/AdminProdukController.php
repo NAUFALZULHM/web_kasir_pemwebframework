@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Kategori;
 
 class AdminProdukController extends Controller
 {
@@ -31,6 +32,7 @@ public function create()
     //
     $data = [
         'title' => 'Tambah Produk',
+        'kategori' => Kategori::get(),
         'content' => 'admin/produk/create'
     ];
     return view('admin.layouts.wrapper', $data);
@@ -43,8 +45,23 @@ public function store(Request $request)
 {
     //
     $data = $request->validate([
-        'name' => 'required|unique:produks'
+        'name' => 'required',
+        'kategori_id' => 'required',
+        'harga' => 'required',
+        'stok' => 'required',
     ]);
+
+    if ($request->hasFile('gambar')) {
+        $gambar = $request->file('gambar');
+        $file_name = time() . "_" . $gambar->getClientOriginalName();
+
+        $storage = 'uploads/images/';
+        $gambar->move($storage, $file_name);
+        $data['gambar'] = $storage . $file_name;
+    }else{
+        $data['gambar'] = null;
+    }
+
     Produk::create($data);
     Alert::success('Sukses', 'Data berhasil ditambahkan');
     return redirect()->back();
