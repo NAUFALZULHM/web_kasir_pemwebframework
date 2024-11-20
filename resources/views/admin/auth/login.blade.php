@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/vendor/admin/admin/index2.html"><b>Admin</b>LTE</a>
+    <a href="/vendor/admin/admin/index2.html"><b>Cash</b>Flow</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

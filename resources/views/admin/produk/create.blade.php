@@ -30,7 +30,7 @@
                 @enderror" id="">
                     <option value="">--Kategori--</option>
                     @foreach ($kategori as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option value="{{ $item->id }}" {{ isset($produk) ? $item->id == $produk->kategori_id ? 'selected' :'':''}}>{{ $item->name }}</option>
                     @endforeach
                 </select>
                     
@@ -71,6 +71,10 @@
                     </div>
                 @enderror
 
+                @isset($produk)
+                    <img src="/{{ $produk->gambar }}" width="100px" alt="">
+                @endisset
+                <br>    
                 <a href="/admin/produk" class="btn btn-info mt-2"><i class="fa fa-arrow-left"></i> Kembali</a>
                 <button type="submit" class="btn btn-primary mt-2"><i class="fa fa-save"></i> Simpan</button>
                 </form>
