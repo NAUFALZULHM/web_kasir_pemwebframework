@@ -31,9 +31,14 @@ class AdminAuthController extends Controller
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
             Alert::success('Sukses', 'Login berhasil');
-            return redirect('admin/dashboard');
-        }
 
+            // cek role
+            if (Auth::user()->role === 'admin') {
+                return redirect('admin/dashboard');
+            } else {
+                return redirect('user/dashboard');
+            }
+        }
         return back()->with('loginError', 'Email atau password salah');
     }
 

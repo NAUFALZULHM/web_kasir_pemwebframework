@@ -1,5 +1,5 @@
 <div class="row p-2">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-body">
                 <h5><b>{{ $title }}</b></h5>
