@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | Login</title>
+  <title>Login Page</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="/vendor/admin/admin/dist/css/adminlte.min.css">

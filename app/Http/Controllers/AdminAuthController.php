@@ -17,7 +17,7 @@ class AdminAuthController extends Controller
             return redirect('admin/dashboard');
         }
 
-        return view('admin.auth.login');
+        return view('auth.login');
     }
 
     // Proses login
@@ -35,8 +35,8 @@ class AdminAuthController extends Controller
             // cek role
             if (Auth::user()->role === 'admin') {
                 return redirect('admin/dashboard');
-            } else {
-                return redirect('user/dashboard');
+            } else if (Auth::user()->role === 'user') {
+                return redirect('user/dashboard/halo');
             }
         }
         return back()->with('loginError', 'Email atau password salah');
@@ -60,7 +60,7 @@ class AdminAuthController extends Controller
             return redirect('admin/dashboard');
         }
 
-        return view('admin.auth.register');
+        return view('auth.register');
     }
 
     // Proses registrasi
