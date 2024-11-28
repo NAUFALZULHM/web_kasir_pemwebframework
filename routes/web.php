@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\UserTransaksiController;
 use Illuminate\Support\Facades\Route;
 
 // Route Login
@@ -39,13 +40,23 @@ Route::prefix('/admin')->middleware('auth')->group(function (){
     Route::resource('/user', AdminUserController::class );
 });
 //Route Halaman Dashboard User
-Route::get('/', function () {
-    $data = [
-        'content' => 'user.dashboard.index', // Path ke konten dashboard user
-    ];
-    // $data = [
-    //     'content' => 'user.dashboard.halo'
-    // ];
-    return view('user.layouts.wrapper', $data); // Gunakan wrapper user
-})->middleware('auth');
+// Route Group untuk User
+Route::prefix('/')->middleware('auth')->group(function () {
+    // Halaman Dashboard User
+    Route::get('/', function () {
+        $data = [
+            'content' => 'user.dashboard.index',
+        ];
+        return view('user.layouts.wrapper', $data);
+    });
+
+    // Route Resource untuk Transaksi
+    Route::resource('/transaksi', UserTransaksiController::class);
+});
+// Route::get('/', function () {
+//     $data = [
+//         'content' => 'user.dashboard.index', // Path ke konten dashboard user
+//     ];
+//     return view('user.layouts.wrapper', $data); // Gunakan wrapper user
+// })->middleware('auth');
 
