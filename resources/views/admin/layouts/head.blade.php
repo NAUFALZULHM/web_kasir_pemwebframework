@@ -1,3 +1,8 @@
+@php
+    if(Auth::user()->role === 'user') {
+        abort(403, 'Unauthorized action.');
+    }
+@endphp
 
 <!DOCTYPE html>
 

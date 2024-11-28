@@ -18,7 +18,7 @@ Route::get('/register', [AdminAuthController::class, 'register'])->name('registe
 Route::post('/register', [AdminAuthController::class, 'doRegister'])->middleware('guest');
 
 // Halaman Dashboard
-Route::get('/', function () {
+Route::get('/admin', function () {
     $data = [
         'content' => 'admin.dashboard.index'
     ];
@@ -39,12 +39,14 @@ Route::prefix('/admin')->middleware('auth')->group(function (){
     Route::resource('/user', AdminUserController::class );
 });
 
-// Route Halaman Dashboard User
-Route::get('/user/dashboard', function () {
+//Route Halaman Dashboard User
+Route::get('/', function () {
+    $data = [
+        'content' => 'user.dashboard.index', // Path ke konten dashboard user
+    ];
     // $data = [
-    //     'content' => 'user.dashboard.index', // Path ke konten dashboard user
+    //     'content' => 'user.dashboard.halo'
     // ];
-    return view('user.layouts.wrapper'); // Gunakan wrapper user
+    return view('user.layouts.wrapper', $data); // Gunakan wrapper user
 })->middleware('auth');
-
 
