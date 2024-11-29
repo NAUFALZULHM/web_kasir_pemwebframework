@@ -51,6 +51,9 @@ public function store(Request $request)
         'stok' => 'required',
     ]);
 
+    // Membuat input disimpan dalam Sentence case
+    $data['name'] = ucfirst(strtolower($data['name']));
+// Menangani file gambar
     if ($request->hasFile('gambar')) {
         $gambar = $request->file('gambar');
         $file_name = time() . "_" . $gambar->getClientOriginalName();
@@ -61,8 +64,9 @@ public function store(Request $request)
     }else{
         $data['gambar'] = null;
     }
-
+// Menyimpan data produk ke database
     Produk::create($data);
+    // Menampilkan alert sukses dan redirect
     Alert::success('Sukses', 'Data berhasil ditambahkan');
     return redirect()->back();
 }

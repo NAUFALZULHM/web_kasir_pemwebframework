@@ -24,7 +24,7 @@
                     </div>
                 @enderror
 
-                <label for="">Nama produk</label>
+                <label for="">Kategori produk</label>
                 <select name="kategori_id" class="form-control @error('kategori_id') is-invalid
                     
                 @enderror" id="">

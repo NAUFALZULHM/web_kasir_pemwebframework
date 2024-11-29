@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Http\Request;
 
 class UserTransaksiController extends Controller
@@ -28,6 +28,11 @@ class UserTransaksiController extends Controller
     public function create()
     {
         //
+        $data = [
+            'title' => 'Tambah Transaksi',
+            'content' => 'user/transaksi/create'
+        ];
+        return view('user.layouts.wrapper', $data);
     }
 
     /**
