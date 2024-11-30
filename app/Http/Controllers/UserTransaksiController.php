@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use App\Models\Transaksi;
-
+// use App\Http\Controllers\Produk;
 use Illuminate\Http\Request;
 
 class UserTransaksiController extends Controller
@@ -28,8 +29,40 @@ class UserTransaksiController extends Controller
     public function create()
     {
         //
+        $produk = Produk::get();
+
+        $produk_id = request('produk_id');
+        $p_detail = null;
+        // Validasi jika produk_id tidak kosong
+        if ($produk_id) {
+            $p_detail = Produk::find($produk_id);
+            if (!$p_detail) {
+                // Produk tidak ditemukan
+                return back()->with('error', 'Produk tidak ditemukan');
+            }
+        }
+
+        $act = request('act');
+        $qty = request('qty');
+        if ($act == 'min') {
+            if ($qty <= 1) {
+                $qty = 1;
+            } else {
+                $qty = $qty - 1;
+            }
+        } else {
+            $qty = $qty + 1;
+        }
+
+        // Menghitung subtotal (jika produk ditemukan)
+        $subtotal = $p_detail ? $qty * $p_detail->harga : 0;
+
         $data = [
             'title' => 'Tambah Transaksi',
+            'produk' => $produk,
+            'p_detail' => $p_detail,
+            'qty' => $qty,
+            'subtotal' => $subtotal,
             'content' => 'user/transaksi/create'
         ];
         return view('user.layouts.wrapper', $data);
