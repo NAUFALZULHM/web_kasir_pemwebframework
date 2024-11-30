@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Session;
 
 class AdminAuthController extends Controller
 {
@@ -46,6 +47,7 @@ class AdminAuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        Session::flush();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 

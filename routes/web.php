@@ -1,54 +1,55 @@
 <?php
 
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserTransaksiController;
 use Illuminate\Support\Facades\Route;
 
-// Route Login
-Route::get('/login', [AdminAuthController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login/todashboard', [AdminAuthController::class, 'doLogin'])->middleware('guest');
+// Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'index'])->name('login');
+    Route::post('/login/todashboard', [AdminAuthController::class, 'doLogin']);
+    Route::get('/register', [AdminAuthController::class, 'register'])->name('register');
+    Route::post('/register', [AdminAuthController::class, 'doRegister']);
+});
 
 // Route Logout
+// Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('logout', [AdminAuthController::class, 'logout'])->middleware('auth');
 
-// Route Register
-Route::get('/register', [AdminAuthController::class, 'register'])->name('register')->middleware('guest');
-Route::post('/register', [AdminAuthController::class, 'doRegister'])->middleware('guest');
-
 // Halaman Dashboard
-Route::get('/admin', function () {
-    $data = [
-        'content' => 'admin.dashboard.index'
-    ];
-    return view('admin.layouts.wrapper', $data);
-})->middleware('auth');
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
 
+// Admin route
+// Admin Routes
+// Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return redirect()->route('admin.dashboard');
+//     })->name('admin');
 
+//     Route::resource('/produk', AdminProdukController::class);
+//     Route::resource('/kategori', AdminKategoriController::class);
+//     Route::resource('/user', AdminUserController::class);
+// });
 Route::prefix('/admin')->middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        $data = [
-            'content' => 'admin.dashboard.index'
-        ];
-        return view('admin.layouts.wrapper', $data);
-    });
-
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/produk', AdminProdukController::class);
     Route::resource('/kategori', AdminKategoriController::class);
     Route::resource('/user', AdminUserController::class);
 });
 
+// User Routes
+// Route::middleware(['auth', 'role:user'])->group(function () {
+//     Route::get('/', [UserDashboardController::class, 'index'])->name('user.dashboard');
+//     Route::resource('/transaksi', UserTransaksiController::class);
+// });
 Route::prefix('/')->middleware('auth')->group(function () {
     // Halaman Dashboard User
-    Route::get('/', function () {
-        $data = [
-            'content' => 'user.dashboard.index',
-        ];
-        return view('user.layouts.wrapper', $data);
-    });
-
+    Route::get('/', [UserDashboardController::class, 'index'])->name('user.dashboard');
     // Route Resource untuk Transaksi
     Route::resource('/transaksi', UserTransaksiController::class);
 });

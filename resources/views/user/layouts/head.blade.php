@@ -1,6 +1,11 @@
 @php
+    // if (!Auth::check()) {
+    //     return redirect('/');
+    // }
+
     if(Auth::user()->role === 'admin') {
         abort(403, 'Unauthorized action.');
+        // return redirect('/admin');
     }
 @endphp
 <!DOCTYPE html>

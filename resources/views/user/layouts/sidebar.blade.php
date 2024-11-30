@@ -28,7 +28,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/transaksi" class="nav-link {{ Request::is('/transaksi') ? 'active' : '' }}">
+            <a href="/transaksi" class="nav-link {{ Request::is('transaksi*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-cash-register"></i>
               <p>
                 Transaksi
