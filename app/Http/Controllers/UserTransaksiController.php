@@ -29,6 +29,45 @@ class UserTransaksiController extends Controller
     public function create()
     {
         //
+
+        $data = [
+            'user_id' => auth()->user()->id,
+            'kasir_name' => auth()->user()->name,
+            'total' => 0,
+        ];
+        $transaksi = Transaksi::create($data);
+        return redirect(route('transaksi.edit', ['transaksi' => $transaksi->id]));
+
+        // return redirect('user/transaksi/'.$transaksi->id.'/edit');
+        
+        
+    }
+
+
+    
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
         $produk = Produk::get();
 
         $produk_id = request('produk_id');
@@ -66,30 +105,6 @@ class UserTransaksiController extends Controller
             'content' => 'user/transaksi/create'
         ];
         return view('user.layouts.wrapper', $data);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**

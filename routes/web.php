@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserTransaksiController;
+use App\Http\Controllers\UserTransaksiDetailController;
 use Illuminate\Support\Facades\Route;
 
 // Authentication Routes
@@ -51,5 +52,10 @@ Route::prefix('/')->middleware('auth')->group(function () {
     // Halaman Dashboard User
     Route::get('/', [UserDashboardController::class, 'index'])->name('user.dashboard');
     // Route Resource untuk Transaksi
-    Route::resource('/transaksi', UserTransaksiController::class);
+    Route::post('/transaksi/detail/create', [UserTransaksiDetailController::class, 'create']);
+    Route::resource('/transaksi', UserTransaksiController::class)->names([
+        'edit' => 'transaksi.edit',
+    ]);
+    
+    // Route::resource('/transaksi', UserTransaksiController::class);
 });

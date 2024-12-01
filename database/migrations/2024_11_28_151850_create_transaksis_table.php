@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->bigInteger('subtotal');
+            $table->bigInteger('total');
             $table->string('kasir_name')->nullable();
             $table->enum('status', ['selesai','pending'])->default('pending');
             $table->timestamps();

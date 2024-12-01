@@ -21,58 +21,59 @@
                         </form>
                     </div>
                 </div>
-
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        <label for="">Nama Produk</label>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" value="{{ isset($p_detail) ? $p_detail->name : '' }}" class="form-control" disabled id="" name="nama_produk">
-                    </div>
-                </div>
-
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        <label for="">harga Satuan</label>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" value="{{ isset($p_detail) ? $p_detail->harga : '' }}" class="form-control" disabled id="" name="harga_satuan"> 
-                    </div>
-                </div>
-
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        <label for="">QTY</label>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="d-flex">
-                            <a href="?produk_id={{ request('produk_id') }}&act=min&qty={{ $qty }}" class="btn btn-primary" ><i class="fas fa-minus"></i></a>
-                            <input type="text" value="{{ $qty }}" class="form-control" name="qty">
-                            <a href="?produk_id={{ request('produk_id') }}&act=plus&qty={{ $qty }}" class="btn btn-primary" ><i class="fas fa-plus"></i></a>
-                            
+                <form action="/user/transaksi/detail/create" method="POST">
+                @csrf
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <label for="">Nama Produk</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" value="{{ isset($p_detail) ? $p_detail->name : '' }}" class="form-control" disabled id="" name="nama_produk">
                         </div>
                     </div>
-                </div>
 
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <label for="">harga Satuan</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" value="{{ isset($p_detail) ? $p_detail->harga : '' }}" class="form-control" disabled id="" name="harga_satuan"> 
+                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <h5>Subtotal : Rp. {{ $subtotal }}</h5>
-                    </div>
-                </div>
 
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <label for="">QTY</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="d-flex">
+                                <a href="?produk_id={{ request('produk_id') }}&act=min&qty={{ $qty }}" class="btn btn-primary" ><i class="fas fa-minus"></i></a>
+                                <input type="text" value="{{ $qty }}" class="form-control" name="qty">
+                                <a href="?produk_id={{ request('produk_id') }}&act=plus&qty={{ $qty }}" class="btn btn-primary" ><i class="fas fa-plus"></i></a>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <a href="/user/transaksi" class="btn btn-info"><i class="fas fa-arrow-left"> Kembali </i></a>
-                        <button type="submit" class="btn btn-primary"> Tambah <i class="fa fa-arrow-right"></i></button>
-                    </div>
-                </div>
 
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            
+                        </div>
+                        <div class="col-md-8">
+                            <h5>Subtotal : Rp. {{ $subtotal }}</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            
+                        </div>
+                        <div class="col-md-8">
+                            <a href="/user/transaksi" class="btn btn-info"><i class="fas fa-arrow-left"> Kembali </i></a>
+                            <button type="submit" class="btn btn-primary"> Tambah <i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
