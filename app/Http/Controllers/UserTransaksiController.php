@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\TransaksiDetail;
 use App\Models\Produk;
 use App\Models\Transaksi;
 // use App\Http\Controllers\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class UserTransaksiController extends Controller
 {
@@ -60,6 +63,17 @@ class UserTransaksiController extends Controller
     public function show(string $id)
     {
         //
+        $transaksi = Transaksi::findOrFail($id);
+    $transaksi_details = TransaksiDetail::where('transaksi_id', $id)->get();
+
+    return view('user.transaksi.create', [
+        'transaksi' => $transaksi,
+        'produk' => Produk::all(),
+        'transaksi_detail' => $transaksi_details,
+        'p_detail' => null,
+        'qty' => 1,
+        'subtotal' => 0,
+    ]);
     }
 
     /**
@@ -80,6 +94,8 @@ class UserTransaksiController extends Controller
                 return back()->with('error', 'Produk tidak ditemukan');
             }
         }
+
+        $transaksi_detail = TransaksiDetail::whereTransaksiId($id)->get();
 
         $act = request('act');
         $qty = request('qty');
@@ -102,6 +118,7 @@ class UserTransaksiController extends Controller
             'p_detail' => $p_detail,
             'qty' => $qty,
             'subtotal' => $subtotal,
+            'transaksi_detail' => $transaksi_detail,
             'content' => 'user/transaksi/create'
         ];
         return view('user.layouts.wrapper', $data);
