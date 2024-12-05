@@ -23,7 +23,7 @@
                 </div>
                 <form action="/transaksi/detail/create" method="POST">
                     @csrf
-                    <input type="hidden" name="transaksi_id" value="{{ Request::segment(3) }}">
+                    <input type="hidden" name="transaksi_id" value="{{ Request::segment(2) }}">
                     <input type="hidden" name="produk_id" value="{{ isset($p_detail) ? $p_detail->id : '' }}">
                     <input type="hidden" name="produk_name" value="{{ isset($p_detail) ? $p_detail->name : '' }}">
                     <input type="hidden" name="subtotal" value="{{ $subtotal }}">

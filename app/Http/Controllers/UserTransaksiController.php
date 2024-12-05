@@ -103,7 +103,7 @@ class UserTransaksiController extends Controller
             }
         }
 
-        $transaksi_detail = TransaksiDetail::whereTransaksiId($id)->get();
+        $transaksi_detail = TransaksiDetail::getAllById($id);
 
         $act = request('act');
         $qty = request('qty');
