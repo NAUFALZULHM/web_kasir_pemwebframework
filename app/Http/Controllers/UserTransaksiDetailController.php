@@ -10,20 +10,8 @@ class UserTransaksiDetailController extends Controller
     //
     public function create(Request $request)
     {
-
-    
         // die('masuk');
         // dd($request->all());
-        // $data = $request->validate([
-        //     'produk_id' => 'required|exists:produk_id',
-        //     'produk_name' => 'required|string',
-        //     'transaksi_id' => 'required|exists:transaksi,id',
-        //     'qty' => 'required|integer|min:1',
-        //     'subtotal' => 'required|numeric|min:1',
-        // ]);
-        // TransaksiDetail::create($data);
-        // return redirect()->back();
-        
         $data = [
             'produk_id' => $request->produk_id,
             'produk_name' => $request->produk_name,
@@ -33,12 +21,15 @@ class UserTransaksiDetailController extends Controller
         ];
         TransaksiDetail::create($data);
         return redirect()->back();
+        
+
     }
 
-    public function show($transaksi_id)
-    {
-        $transaksi_detail = TransaksiDetail::where('transaksi_id', $transaksi_id)->get();
-        return view('transaksi.detail', compact('transaksi_detail'));
-    }
+    // public function show($transaksi_id)
+    // {
+    //     $transaksi_detail = TransaksiDetail::where('transaksi_id', $transaksi_id)->get();
+    //     dd($transaksi_detail); // Debug data
+    //     return view('transaksi.detail', compact('transaksi_detail'));
+    // }
 
 }

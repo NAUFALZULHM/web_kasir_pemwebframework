@@ -36,5 +36,8 @@ Route::prefix('/')->middleware('auth')->group(function () {
     Route::get('/', [UserDashboardController::class, 'index'])->name('user.dashboard');
     // Route Resource untuk Transaksi
     Route::post('/transaksi/detail/create', [UserTransaksiDetailController::class, 'create']);
+    Route::get('/transaksi/{transaksi_id}/detail', [UserTransaksiDetailController::class, 'show']);
+    Route::get('/transaksi/{id}/edit', [UserTransaksiController::class, 'edit'])->name('transaksi.edit');
     Route::resource('/transaksi', UserTransaksiController::class);
+    Route::delete('/transaksi/{id}', [UserTransaksiController::class, 'destroy'])->name('transaksi.destroy');
 });

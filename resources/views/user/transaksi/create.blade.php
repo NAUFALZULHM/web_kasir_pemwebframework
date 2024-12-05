@@ -80,7 +80,7 @@
                             
                         </div>
                         <div class="col-md-8">
-                            <a href="/user/transaksi" class="btn btn-info"><i class="fas fa-arrow-left"> Kembali </i></a>
+                            <a href="/transaksi" class="btn btn-info"><i class="fas fa-arrow-left"> Kembali </i></a>
                             <button type="submit" class="btn btn-primary"> Tambah <i class="fa fa-arrow-right"></i></button>
                         </div>
                     </div>
@@ -131,17 +131,36 @@
                         <th>#</th>
                     </tr>
 
-                    @foreach ($transaksi_detail as $item)
+                    @if($transaksi_detail->isNotEmpty())
+                        @foreach ($transaksi_detail as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->produk_name }}</td>
+                                <td>{{ $item->qty }}</td>
+                                <td>{{ $item->subtotal }}</td>
+                                <td>
+                                    <a href=""><i class="fas fa-times"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5" class="text-center">Tidak ada data transaksi.</td>
+                        </tr>
+                    @endif
+
+
+                    {{-- @foreach ($transaksi_detail as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->produk_name }}</td>
-                        <td>{{ $item->qty }}</td>
-                        <td>{{ $item->subtotal }}</td>
+                        <td>1</td>
+                        <td>Tanggo</td>
+                        <td>4</td>
+                        <td>1000</td>
                         <td>
                             <a href=""><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
-                    @endforeach
+                    @endforeach --}}
 
                 </table>
 

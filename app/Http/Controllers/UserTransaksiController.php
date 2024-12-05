@@ -62,24 +62,32 @@ class UserTransaksiController extends Controller
      */
     public function show(string $id)
     {
-        //
+            //
         $transaksi = Transaksi::findOrFail($id);
-    $transaksi_details = TransaksiDetail::where('transaksi_id', $id)->get();
+        $transaksi_details = TransaksiDetail::where('transaksi_id', $id)->get();
 
-    return view('user.transaksi.create', [
-        'transaksi' => $transaksi,
-        'produk' => Produk::all(),
-        'transaksi_detail' => $transaksi_details,
-        'p_detail' => null,
-        'qty' => 1,
-        'subtotal' => 0,
-    ]);
+        return view('user.transaksi.create', [
+            'transaksi' => $transaksi,
+            'produk' => Produk::all(),
+            'transaksi_detail' => $transaksi_details,
+            'p_detail' => null,
+            'qty' => 1,
+            'subtotal' => 0,
+        ]);
+
+        // // Ambil data transaksi berdasarkan transaksi_id
+        // $transaksi_detail = TransaksiDetail::where('transaksi_id', $transaksi_id)->get();
+
+        // // Debug data yang diambil
+        // dd($transaksi_detail);
+
+        // return view('transaksi.detail', compact('transaksi_detail'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
         $produk = Produk::get();
@@ -138,5 +146,8 @@ class UserTransaksiController extends Controller
     public function destroy(string $id)
     {
         //
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->delete();
+        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 }
