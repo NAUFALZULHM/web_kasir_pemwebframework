@@ -120,6 +120,10 @@ class UserTransaksiController extends Controller
         // Menghitung subtotal (jika produk ditemukan)
         $subtotal = $p_detail ? $qty * $p_detail->harga : 0;
 
+        $transaksi = Transaksi::find($id);
+
+        $dibayarkan = request('dibayarkan');
+        $kembalian = $dibayarkan - $transaksi->total;
         $data = [
             'title' => 'Tambah Transaksi',
             'produk' => $produk,
@@ -127,6 +131,8 @@ class UserTransaksiController extends Controller
             'qty' => $qty,
             'subtotal' => $subtotal,
             'transaksi_detail' => $transaksi_detail,
+            'transaksi' => $transaksi,
+            'kembalian' => $kembalian,
             'content' => 'user/transaksi/create'
         ];
         return view('user.layouts.wrapper', $data);

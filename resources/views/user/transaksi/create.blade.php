@@ -175,22 +175,23 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
+                <form action="" method="GET">
+                    <div class="form-gruop">
+                        <label for="">Total Belanja</label>
+                        <input type="number" disabled value="{{ $transaksi->total }}" name="total_belanja" class="form-control" id="">
+                    </div>
 
-                <div class="form-gruop">
-                    <label for="">Total Belanja</label>
-                    <input type="number" name="total_belanja" class="form-control" id="">
-                </div>
-
-                <div class="form-gruop">
-                    <label for="">Dibayarkan</label>
-                    <input type="number" name="dibayarkan" class="form-control" id="">
-                </div>
-                
-                <button type="submit" class="btn btn-primary btn-block"> Hitung</button>
+                    <div class="form-gruop">
+                        <label for="">Dibayarkan</label>
+                        <input type="number" name="dibayarkan" value="{{ request('dibayarkan') }}" class="form-control" id="">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block"> Hitung</button>
+                </form>
                 <hr>
                 <div class="form-gruop">
                     <label for="">Uang Kembalian</label>
-                    <input type="number" disabled name="kembalian" class="form-control" id="">
+                    <input type="number" value="{{ $kembalian }}"disabled name="kembalian" class="form-control" id="">
                 </div>
             </div>
         </div>
