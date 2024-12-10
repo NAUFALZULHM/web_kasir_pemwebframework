@@ -40,12 +40,8 @@ class UserTransaksiController extends Controller
         ];
         $transaksi = Transaksi::create($data);
         return redirect(route('transaksi.edit', ['transaksi' => $transaksi->id]));
-
-        // return redirect('user/transaksi/'.$transaksi->id.'/edit');
-        
-        
+    
     }
-
 
     
 
@@ -74,14 +70,6 @@ class UserTransaksiController extends Controller
             'qty' => 1,
             'subtotal' => 0,
         ]);
-
-        // // Ambil data transaksi berdasarkan transaksi_id
-        // $transaksi_detail = TransaksiDetail::where('transaksi_id', $transaksi_id)->get();
-
-        // // Debug data yang diambil
-        // dd($transaksi_detail);
-
-        // return view('transaksi.detail', compact('transaksi_detail'));
     }
 
     /**

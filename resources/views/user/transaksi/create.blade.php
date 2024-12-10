@@ -29,11 +29,6 @@
                     <input type="hidden" name="subtotal" value="{{ $subtotal }}">
 
 
-                    {{-- <input type="hidden" name="transaksi_id" value="{{ Request::segment(3) }}">
-                    <input type="hidden" name="produk_id" value="{{ $p_detail->id }}">
-                    <input type="hidden" name="transaksi_id" value="{{ $p_detail->name }}">
-                    <input type="hidden" name="transaksi_id" value="{{ $subtotal }}"> --}}
-
                     <div class="row mt-1">
                         <div class="col-md-4">
                             <label for="">Nama Produk</label>
@@ -71,7 +66,7 @@
                             
                         </div>
                         <div class="col-md-8">
-                            <h5>Subtotal : Rp. {{ $subtotal }}</h5>
+                            <h5>Subtotal : Rp. {{ format_rupiah($subtotal) }}</h5>
                         </div>
                     </div>
 
@@ -85,35 +80,7 @@
                         </div>
                     </div>
                 </form>
-                {{-- <form action="/user/transaksi/detail/create" method="POST">
-                    @csrf
-                    <input type="hidden" name="transaksi_id" value="{{ $transaksi->id }}">
-                    <div class="row mt-1">
-                        <div class="col-md-4">
-                            <label for="">Nama Produk</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="text" value="{{ isset($p_detail) ? $p_detail->name : '' }}" class="form-control" disabled>
-                            <input type="hidden" name="produk_id" value="{{ isset($p_detail) ? $p_detail->id : '' }}">
-                        </div>
-                    </div>
                 
-                    <div class="row mt-1">
-                        <div class="col-md-4">
-                            <label for="">QTY</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="number" name="qty" class="form-control" value="{{ $qty }}" min="1">
-                        </div>
-                    </div>
-                
-                    <div class="row mt-1">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-8">
-                            <button type="submit" class="btn btn-primary"> Tambah <i class="fa fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </form> --}}
                 
             </div>
         </div>
@@ -137,7 +104,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->produk_name }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <td>{{ $item->subtotal }}</td>
+                                <td>{{ 'Rp. '.format_rupiah($item->subtotal) }}</td>
                                 <td>
                                     <a href=""><i class="fas fa-times"></i></a>
                                 </td>
@@ -150,17 +117,6 @@
                     @endif
 
 
-                    {{-- @foreach ($transaksi_detail as $item)
-                    <tr>
-                        <td>1</td>
-                        <td>Tanggo</td>
-                        <td>4</td>
-                        <td>1000</td>
-                        <td>
-                            <a href=""><i class="fas fa-times"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach --}}
 
                 </table>
 
@@ -191,7 +147,7 @@
                 <hr>
                 <div class="form-gruop">
                     <label for="">Uang Kembalian</label>
-                    <input type="number" value="{{ $kembalian }}"disabled name="kembalian" class="form-control" id="">
+                    <input type="text" value="{{ 'Rp. '.format_rupiah($kembalian) }}" disabled name="kembalian" class="form-control" id="">
                 </div>
             </div>
         </div>
