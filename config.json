@@ -1,0 +1,13 @@
+{
+  "server": {
+    "port": 8080
+  },
+  "apps": {
+    "web_kasir_app": {
+      "root": "/mnt/d/laragon/www/web_kasir_pemwebframework/public",
+      "index": "index.php"
+    }
+  }
+}
+
+

@@ -14,7 +14,7 @@
                     @foreach ($transaksi as $k => $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->created_at }}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="/transaksi/{{ $item->id }}/edit" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>

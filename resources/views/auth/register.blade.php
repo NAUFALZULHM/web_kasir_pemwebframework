@@ -10,11 +10,13 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo">
-    <a href="/"><b>Cash</b>Flow</a>
-  </div>
-
   <div class="card">
+    <div class="d-flex justify-content-center align-items-center text-secondary">
+      <h2><b>Cash</b>Flow</h2>
+    </div>
+    <div class="logo">
+      <img src="./images/logo.jpg" class="img-fluid w-25 rounded mx-auto d-block m-2" alt="...">
+    </div>
     <div class="card-body login-card-body">
       <p class="login-box-msg">Register a new membership</p>
 

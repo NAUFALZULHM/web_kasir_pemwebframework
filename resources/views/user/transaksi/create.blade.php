@@ -106,7 +106,7 @@
                                 <td>{{ $item->qty }}</td>
                                 <td>{{ 'Rp. '.format_rupiah($item->subtotal) }}</td>
                                 <td>
-                                    <a href=""><i class="fas fa-times"></i></a>
+                                    <a href="/transaksi/detail/delete?id={{ $item->id }}"><i class="fas fa-times"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -120,7 +120,7 @@
 
                 </table>
 
-                <a href="" class="btn btn-success"><i class="fas fa-check"></i> Selesai</a>
+                <a href="/transaksi/detail/selesai/{{ Request::segment(2) }}" class="btn btn-success"><i class="fas fa-check"></i> Selesai</a>
                 <a href="" class="btn btn-info"><i class="fas fa-file"></i> Pending</a>
             </div>
         </div>

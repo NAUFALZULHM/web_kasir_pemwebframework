@@ -20,7 +20,7 @@ class UserTransaksiController extends Controller
         //
         $data = [
             'title' => 'Manajemen Transaksi',
-            'transaksi' => Transaksi::paginate(10),
+            'transaksi' => Transaksi::orderBy('created_at','DESC')->paginate(10),
             'content' => 'user/transaksi/index'
         ];
         return view('user.layouts.wrapper', $data);

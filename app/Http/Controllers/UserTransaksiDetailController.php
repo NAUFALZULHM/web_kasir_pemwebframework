@@ -48,4 +48,39 @@ class UserTransaksiDetailController extends Controller
         }
         return redirect('transaksi/'.$transaksi_id.'/edit');
     }
+    function delete()
+    {
+        $id = request('id');
+        $td = TransaksiDetail::find($id);
+
+        if (!$td) {
+            return redirect()->back()->with('error', 'Data transaksi detail tidak ditemukan.');
+        }
+
+        $transaksi = Transaksi::find($td->transaksi_id);
+
+        if (!$transaksi) {
+            return redirect()->back()->with('error', 'Data transaksi tidak ditemukan.');
+        }
+
+        $data = [
+            'total' => $transaksi->total - $td->subtotal,
+        ];
+        $transaksi->update($data);
+        $td->delete();
+
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
+    }
+
+    function selesai($id)
+    {
+        $transaksi = Transaksi::find($id);
+        $data = [
+            'status' => 'selesai',
+        ];
+        $transaksi->update($data);
+        return redirect('/transaksi');
+    }
+
+
 }
