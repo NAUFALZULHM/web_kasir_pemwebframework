@@ -8,6 +8,7 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
 
@@ -15,6 +16,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->status }}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="/transaksi/{{ $item->id }}/edit" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>

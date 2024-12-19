@@ -17,6 +17,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                         @foreach ($user as $item)
@@ -24,6 +25,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
+                            <td>{{ $item->role }}</td>
                             <td>
                                 <div class="d-flex">
                                     <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>

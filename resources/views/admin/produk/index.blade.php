@@ -8,6 +8,8 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
+                        <th>Stok</th>
+                        <th>Harga Satuan</th>
                         <th>Action</th>
                     </tr>
 
@@ -15,6 +17,8 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->stok }}</td>
+                        <td>{{ $item->harga }}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="/admin/produk/{{ $item->id }}/edit" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
