@@ -29,11 +29,14 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
+ 
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="vendor/admin/admin/dist/img/LOGO_LOAD.png" alt="AdminLTELogo" height="200" width="200">
   </div>

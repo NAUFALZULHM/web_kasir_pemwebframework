@@ -19,15 +19,36 @@
                         <td>{{ $item->status }}</td>
                         <td>
                             <div class="d-flex">
+                                @if ($item->status !== 'selesai')
+                                    <a href="/transaksi/{{ $item->id }}/edit" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                @else
+                                    <a href="/transaksi/{{ $item->id }}" class="btn btn-secondary btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                @endif
+                        
+                                <form action="/transaksi/{{ $item->id }}" method="POST">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm ml-1" {{ $item->status === 'selesai' ? 'disabled' : '' }}>
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                        
+                        {{-- <td>
+                            <div class="d-flex">
                                 <a href="/transaksi/{{ $item->id }}/edit" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                                {{-- <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> --}}
                                 <form action="/transaksi/{{ $item->id }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-danger btn-sm ml-1"><i class="fas fa-trash"></i></button>
                                 </form>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
                     @endforeach
                 </table>

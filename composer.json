@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
+        "laravel/octane": "^2.6",
         "laravel/tinker": "^2.9",
         "realrashid/sweet-alert": "^7.2"
     },
