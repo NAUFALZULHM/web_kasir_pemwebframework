@@ -1,4 +1,4 @@
 @include('sweetalert::alert')
-@if ($content)
+@if (isset($content) && $content)
     @include($content)
 @endif

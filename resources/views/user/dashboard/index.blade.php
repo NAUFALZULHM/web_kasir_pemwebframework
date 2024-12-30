@@ -1,6 +1,3 @@
-<div class="container-fluid mt-2">
-    <div class="alert alert-success">Halo {{ auth()->user()->name }} Selamat datang di halaman Pegawai !</div>
-</div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +33,9 @@
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="vendor/admin/admin/dist/img/LOGO_LOAD.png" alt="AdminLTELogo" height="200" width="200">
   </div>
+  <div class="container-fluid mt-2">
+    <div class="alert alert-success">Halo {{ auth()->user()->name }} Selamat datang di halaman Pegawai !</div>
+</div>
 
     <!-- Main content -->
     <section class="content">

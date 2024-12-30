@@ -6,6 +6,8 @@ use App\Models\Produk;
 use App\Models\Transaksi;
 // use App\Http\Controllers\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -42,6 +44,23 @@ class UserTransaksiController extends Controller
         return redirect(route('transaksi.edit', ['transaksi' => $transaksi->id]));
     
     }
+    public function hapusSemua()
+    {
+        try {
+            // Menghapus semua transaksi dan detailnya
+            \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            Transaksi::truncate(); // Hapus tabel transaksi
+            TransaksiDetail::truncate(); // Hapus tabel detail transaksi
+            \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+            // Redirect ke halaman transaksi dengan pesan sukses
+            return redirect()->route('transaksi.index')->with('success', 'Semua transaksi berhasil dihapus.');
+        } catch (\Exception $e) {
+            // Tangani error
+            return redirect()->route('transaksi.index')->with('error', 'Terjadi kesalahan saat menghapus transaksi: ' . $e->getMessage());
+        }
+    }
+
 
     
 
@@ -71,6 +90,26 @@ class UserTransaksiController extends Controller
             'subtotal' => 0,
         ]);
     }
+
+    public function nota($id)
+    {
+        $transaksi = Transaksi::with('details.produk')->find($id);
+
+        if (!$transaksi) {
+            abort(404, 'Transaksi tidak ditemukan');
+        }
+
+        // // Periksa isi relasi produk
+        // dump($transaksi->details->first()->produk);
+
+        return view('user.layouts.wrapper', [
+            'content' => 'user.transaksi.nota',
+            'transaksi' => $transaksi,
+        ]);
+    }
+
+
+
 
     /**
      * Show the form for editing the specified resource.

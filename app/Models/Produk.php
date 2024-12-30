@@ -10,4 +10,12 @@ class Produk extends Model
     use HasFactory;
 
     protected $guarded =[];
+
+
+    // Relasi dengan TransaksiDetail
+    public function transaksiDetails()
+    {
+        return $this->hasMany(TransaksiDetail::class, 'produk_id');
+    }
+
 }

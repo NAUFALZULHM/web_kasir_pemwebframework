@@ -48,6 +48,7 @@ class UserTransaksiDetailController extends Controller
         }
         return redirect('transaksi/'.$transaksi_id.'/edit');
     }
+    
     function delete()
     {
         $id = request('id');
