@@ -47,7 +47,7 @@
                                 <form action="/transaksi/{{ $item->id }}" method="POST">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm ml-1" {{ $item->status === 'selesai' ? 'disabled' : '' }}>
+                                    <button type="submit" class="btn btn-danger btn-sm ml-1" {{ $item->status === 'selesai' ? : '' }}>
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
